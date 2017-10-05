@@ -15,58 +15,45 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="nav has-shadow">
             <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-                    </a>
+                <div class="nav-left">
+                <a href="{{route('home')}}"  class="nav-item">
+                <img src="{{ asset('images/temp_logo.png')}}" alt="GWU Logo">
+                </a>
+                <a href="#" class="nav-item is-tab is-hidden-mobile m-l-10">Learn</a>
+                <a href="#" class="nav-item is-tab is-hidden-mobile">Discuss</a>
+                <a href="#" class="nav-item is-tab is-hidden-mobile">Share</a>
+                    
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                <div class="nav-right" style="overflow: visible;">
+                @guest    
+                <a href="{{route('login')}}" class="nav-item is-tab">Login</a>
+                <a href="{{route('register')}}" class="nav-item is-tab">Register</a>
+                @else
+                <button class="dropdown nav-item is-tab is-aligned-right">
+                Hey  {{ Auth::user()->name }} <span class="icon"><i class="fa fa-caret-down"></i></span>
+                <ul class="dropdown-menu">
+                       <li><a href="#">
+                <span class="icon"><i class="fa fa-fw fa-user-circle-o m-r-10"></i></span>         Profile</a></li>
+                        <li><a href="#">
+                <span class="icon"><i class="fa fa-fw fa-bell m-r-10"></i></span>                Notifications</a></li>
+                        <li><a href="#">
+                <span class="icon"><i class="fa fa-fw fa-cog m-r-10" ></i></span>                Settings</a></li>
+                        <li class="separator"></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <span class="icon"><i class="fa fa-fw fa-sign-out m-r-10"></i></span>                Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
+                </li>
+                            
+                        </ul>
+                @endguest
+                    </button>
+                    
+                    
                 </div>
             </div>
         </nav>

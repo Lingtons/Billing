@@ -13,6 +13,16 @@ import Buefy from 'buefy';
 
 Vue.use(Buefy);
 
+var app = new Vue({
+	el:'#app',
+	data:{}
+})
+
+$(document).ready(function(){
+	$('button.dropdown').hover(function(e){
+		$(this).toggleClass('is-active');
+	})
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -25,3 +35,4 @@ const app = new Vue({
     el: '#app'
 });
 */ 
+
