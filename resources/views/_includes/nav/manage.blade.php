@@ -29,11 +29,22 @@
           <li><a href="{{route('permissions.index')}}">Permissions</a></li>
         </ul>
         </li>
+        <li>
+          <a href="{{route('shops.index')}}">
+            <span class="icon is-small"><i class="fa fa-link"></i></span> Manage Shops
+          </a>
+        </li>
+        <li>
+          <a href="{{route('shops.index')}}">
+            <span class="icon is-small"><i class="fa fa-cog"></i></span> Manage Setting
+          </a>
+        </li>
+        
       </ul>
     </li>
     <li>
       <a href="#" class="">
-        <span class="icon"><i class="fa fa-info"></i></span> About
+        <span class="icon"><i class="fa fa-info"></i></span> Generate Reports
       </a>
     </li>
   </ul>

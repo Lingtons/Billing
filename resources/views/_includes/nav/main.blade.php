@@ -4,9 +4,9 @@
                 <a href="{{route('home')}}"  class="nav-item">
                 <img src="{{ asset('images/temp_logo.png')}}" alt="GWU Logo">
                 </a>
-                <a href="#" class="nav-item is-tab is-hidden-mobile m-l-10">Learn</a>
-                <a href="#" class="nav-item is-tab is-hidden-mobile">Discuss</a>
-                <a href="#" class="nav-item is-tab is-hidden-mobile">Share</a>
+                <a href="#" class="nav-item is-tab is-hidden-mobile m-l-10">Our Services</a>
+                <a href="#" class="nav-item is-tab is-hidden-mobile">Contact Us</a>
+                <a href="#" class="nav-item is-tab is-hidden-mobile">About Us</a>
                     
                 </div>
 
@@ -23,7 +23,7 @@
       
                 @else
                 <button class="dropdown nav-item is-tab is-aligned-right">
-                Hey  {{ Auth::user()->name }} <span class="icon"><i class="fa fa-caret-down"></i></span>
+                Hi,  {{ Auth::user()->name }} <span class="icon"><i class="fa fa-caret-down"></i></span>
                 <ul class="dropdown-menu">
                        <li><a href="#">
                 <span class="icon"><i class="fa fa-fw fa-user-circle-o m-r-10"></i></span>         Profile</a></li>
