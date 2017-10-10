@@ -93,3 +93,19 @@ button.nav-item{
 .nav-item img{
 	max-height: 2.8rem;
 }
+
+@media screen and (max-width: 768px) {
+  #menu-toggle:checked + .nav-menu {
+    display: block;
+  }
+
+  label.nav-toggle {
+    cursor: pointer;
+    display: block;
+    height: auto;
+    position: relative;
+    width: 3.25rem;
+}
+
+}
+

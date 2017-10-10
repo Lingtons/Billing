@@ -16278,6 +16278,20 @@ button.nav-item.is-active {
   max-height: 2.8rem;
 }
 
+@media screen and (max-width: 768px) {
+  #menu-toggle:checked + .nav-menu {
+    display: block;
+  }
+
+  label.nav-toggle {
+    cursor: pointer;
+    display: block;
+    height: auto;
+    position: relative;
+    width: 3.25rem;
+  }
+}
+
 /*
 This .scss loop will create "margin helpers" and "padding helpers" for use in your web projects.
 It will generate several classes such as:

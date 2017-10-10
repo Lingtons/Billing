@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -15,12 +15,14 @@
     @yield('styles')
 </head>
 <body>
-    <div id="app">
- @include('_includes.nav.main')
-        @yield('content')
+  
+    <div  id="app">
+        @include('_includes.nav.main')
+        @include('_includes.nav.manage')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
+@yield('scripts')
 </html>
