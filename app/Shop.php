@@ -16,4 +16,9 @@ class Shop extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+        public function bills()
+    {
+        return $this->hasMany('App\Billing');
+    }
 }

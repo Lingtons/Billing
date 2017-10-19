@@ -43,7 +43,7 @@
 
                                 <div class="columns is-mobile">
                   <div class="column is-one-half">
-                    <a href="{{route('shops.show', $shop->id)}}" class="button is-info is-fullwidth">Usage</a>
+                    <a href="{{route('billing.show', $shop->id)}}" class="button is-info is-fullwidth">Usage</a>
                   </div>
                   <div class="column is-one-half">
                     <a href="{{route('shops.edit', $shop->id)}}" class="button is-success is-fullwidth">Payments</a>

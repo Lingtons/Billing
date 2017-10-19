@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Shop;
 use App\User;
+use App\Billing;
 use App\Permission;
 use Session;
 
@@ -46,7 +47,9 @@ class ShopController extends Controller
         'meter_no' => 'required|max:50',
         'address' => 'required|max:255',
         'service_address' => 'required|max:255',
-        'last_reading' => 'required|max:255'
+        'start_date' => 'required',
+
+        
       ]);
 
         $shop = new Shop();
@@ -55,11 +58,25 @@ class ShopController extends Controller
         $shop->meter_no = $request->meter_no;
         $shop->address = $request->address;
         $shop->service_address = $request->service_address;
-        $shop->last_reading = $request->last_reading;
+        
  
 
 
         if ($shop->save()) {
+
+            $bill = new Billing();
+            $bill->shop_id = $shop->id;
+            $bill->previous_date = $request->start_date;
+            $bill->current_date = $request->start_date;
+            $bill->no_days = 0;
+            $bill->previous_reading = 0;
+            $bill->current_reading = 0;
+            $bill->usage = 0;
+            $bill->billed_usage = 0;
+            $bill->period_charge = 0;
+            $bill->access_charge = 0;
+            $bill->save();
+            
             return redirect()->route('shops.show', $shop->id);
         }else{
             Session::flash('danger', 'Sorry, a problem occured while creating the shop. ');

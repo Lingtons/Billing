@@ -43,10 +43,11 @@
                   </div>
                   <div class="field">
                     <p class="control">
-                      <label for="last_reading" class="label">Last Reading</label>
-                      <input type="number" class="input" name="last_reading" value="0" id="last_reading"  required>
+                      <label for="start_date" class="label">Meter Start Date</label>
+                      <input type="date" class="input" id="start_date" name="start_date"  required>
                     </p>
                   </div>
+
                   
                 </div>
               </div>

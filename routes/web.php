@@ -24,6 +24,13 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator')->gr
 	Route::resource('/permissions', 'PermissionController', ['except' => 'destroy']);
 	Route::resource('/roles', 'RoleController', ['except' => 'destroy']);
 	Route::resource('/shops', 'ShopController', ['except' => 'destroy']);
+	Route::resource('/setting', 'SettingsController', ['except' => 'destroy']);
+	Route::resource('/billing', 'BillingsController', ['except' => 'destroy']);
+	Route::get('/new_bill/{shop_id}', 'BillingsController@new_bill');
+	Route::get('/view_bill/{bill_id}', 'BillingsController@view_bill');
+	Route::get('/download_invoice/{bill_id}', 'BillingsController@download_bill');
+	
 
 });
+
 Route::get('/home', 'HomeController@index')->name('home');
