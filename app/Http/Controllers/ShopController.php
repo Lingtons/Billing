@@ -118,13 +118,17 @@ class ShopController extends Controller
      */
     public function update(Request $request, $id)
     {
+     
      $this->validate($request, [
         'name' => 'required|max:255',
         'meter_no' => 'required|max:50',
         'address' => 'required|max:255',
         'service_address' => 'required|max:255',
-        'last_reading' => 'required|max:255',
-        'user_id' => 'sometimes|max:10'
+        'user_id' => 'sometimes|max:10',
+        'outstanding_description' => 'sometimes',
+        'outstanding_cost' => 'sometimes',
+        
+
       ]);
 
       $shop = Shop::findOrFail($id);
@@ -132,14 +136,16 @@ class ShopController extends Controller
       $shop->meter_no = $request->meter_no;
       $shop->address = $request->address;
       $shop->service_address = $request->service_address;
-      $shop->last_reading = $request->last_reading;
       $shop->user_id = $request->user_id;
+      $shop->outstanding_description = $request->outstanding_description;
+      $shop->outstanding_cost = $request->outstanding_cost;
 
       if ($shop->save()) {
             return redirect()->route('shops.show', $id);
         }else{
             Session::flash('danger', 'Sorry, a problem occured while updating the shop. ');
             return redirect()->route('shops.edit', $id)->withInput();
+        
         }
       }
 

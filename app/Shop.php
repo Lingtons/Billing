@@ -9,7 +9,7 @@ class Shop extends Model
     //
 
     protected $fillable = [
-        'name', 'meter_no', 'user_id', 'address', 'service_address', 'last_reading'
+        'name', 'meter_no', 'user_id', 'address', 'service_address', 'last_reading','outstanding_description', 'outstanding_cost'
     ];
 
         public function user()
@@ -20,5 +20,10 @@ class Shop extends Model
         public function bills()
     {
         return $this->hasMany('App\Billing');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany('App\Payment');
     }
 }

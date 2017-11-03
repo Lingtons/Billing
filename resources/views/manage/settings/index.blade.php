@@ -7,8 +7,8 @@
 		<h1 class="title">Variable Settings</h1>
 	</div>
 	<div class="column">
-			
-	</div>
+        <a href="{{route('manage.dashboard')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Dashboard</a>
+      </div>
 </div>
 
 <form action="{{route('setting.update',['id' => 1 ] )}}" class="column is-half m-l-30" method="post" role="form">

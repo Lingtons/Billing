@@ -8,7 +8,7 @@
         <h5>{{$role->description}}</h5>
       </div>
       <div class="column">
-        <a href="{{route('roles.edit', $role->id)}}" class="button is-primary is-pulled-right"><i class="fa fa-user-plus m-r-10"></i> Edit this Role</a>
+        <a href="{{route('roles.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Roles</a>
       </div>
     </div>
     <hr class="m-t-0">

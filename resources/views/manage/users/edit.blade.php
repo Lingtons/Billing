@@ -11,12 +11,12 @@
 		<h1 class="title">Edit User</h1>
 	</div>
 	<div class="column">
-			<a href="{{route('users.index')}}" class="button is-primary "><i class="fa fa-chevron-left m-r-10"></i>Back to Users</a>
+			<a href="{{route('users.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Users</a>
 
 	</div>
 </div>
 
-<form action="{{route('users.update',['id' => $user->id ] )}}" class="column is-half m-l-30" method="post" role="form">
+<form action="{{route('users.update',['id' => $user->id ] )}}" class="column is-fullwidth" method="post" role="form">
                      {{method_field('PUT')}}
                      {{csrf_field()}}
       <div class="columns">

@@ -6,7 +6,11 @@
       <div class="column">
         <h1 class="title">Compute Usage Bill</h1>
       </div>
-    </div>
+    <div class="column">
+        <a href="{{route('billing.show', $shop->id)}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Bills</a>
+      </div>
+    </div> 
+
     <hr class="m-t-0">
     <form action="{{route('billing.store')}}" method="POST">
       {{ csrf_field() }}
@@ -60,7 +64,7 @@
         <div class="column">
           
 
-          <button class="button is-primary">Compute Bill</button>
+          <button class="button is-primary"><i class="fa fa-money m-r-10"></i> Compute Bill</button>
         </div>
       </div>
     </form>

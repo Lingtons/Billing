@@ -7,12 +7,13 @@
 		<h1 class="title">Create User</h1>
 	</div>
 	<div class="column">
-			<a href="{{route('users.index')}}" class="button is-primary "><i class="fa fa-chevron-left m-r-10"></i>Back to Users</a>
+			<a href="{{route('users.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Users</a>
 
 	</div>
 </div>
+<hr class="m-t-10">
 
-<form action="{{route('users.store')}}" class="column is-half is-offset-one-quarter" method="post" role="form">
+<form action="{{route('users.store')}}" class="column is-fullwidth" method="post" role="form">
                      {{csrf_field()}}
                  
                  <div class="field">

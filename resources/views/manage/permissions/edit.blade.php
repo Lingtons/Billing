@@ -8,7 +8,7 @@
       </div> <!-- end of column -->
 
       <div class="column">
-        <a href="{{route('permissions.edit', $permission->id)}}" class="button is-primary is-pulled-right"><i class="fa fa-edit m-r-10"></i> Edit Permission</a>
+        <a href="{{route('permissions.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Permissions</a>
       </div>
     </div>
     <hr class="m-t-0">

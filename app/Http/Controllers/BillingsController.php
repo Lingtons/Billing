@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Billing;
+use App\Bill_History;
 use App\Shop;
 use App\Setting;
+use App\Payment;
 use PDF;
 
 
@@ -18,10 +20,6 @@ class BillingsController extends Controller
      */
     public function index()
     {
-        PDF::SetTitle('Hello World');
-        PDF::AddPage();
-        PDF::Write(0, 'Hello World');
-        PDF::Output('hello_world.pdf');
     }
 
     /**
@@ -42,7 +40,7 @@ class BillingsController extends Controller
      */
     public function store(Request $request)
     {
-               $this->validate($request, [
+        $this->validate($request, [
         'shop_id' => 'required',
         'current_date' => 'required',
         'current_reading' => 'required',
@@ -57,10 +55,8 @@ class BillingsController extends Controller
     $to = \Carbon\Carbon::createFromFormat('Y-m-d', $request->current_date);
     $diff_in_days = $to->diffInDays($from);
 
-    //values
-
-    
-
+        //new billing values
+        
         $usage_bill = new Billing();
 
         $usage_bill->shop_id = $request->shop_id;
@@ -77,16 +73,35 @@ class BillingsController extends Controller
         $usage_bill->statement_date = $setting->statement_date;
 
         if ($usage_bill->save()) {
+
+            //new bill history manipulations
+
+            $bill_hist = Billing::WHERE('id', '!=', $usage_bill->id)->orWhereNull('id')->get();
+            $sum_usage = $bill_hist->sum('period_charge') + $bill_hist->sum('access_charge');
+
+            $pay_hist = Payment::where('shop_id', $s_id)->get();
+            $sum_payment = $pay_hist->sum('amount');
+
+            $history = new Bill_History();
+            $history->billing_id = $usage_bill->id;
+            $history->previous_bill_date = $bill_hist[$bill_hist->count()-1]->current_date;
+            $history->previous_pay_date = $pay_hist[$pay_hist->count()-1]->date_recieved;
+            $history->previous_bill = $sum_usage;
+            $history->previous_pay = $sum_payment;
+            $history->save();
+
             $bills = Billing::where('shop_id', $request->shop_id)->get();
             $shop = Shop::findOrFail($request->shop_id);
-            return view('manage.billings.index')->withBilling($bills)->withShop($shop);
+
+            return view('manage.billings.index', compact('bills', 'shop'));
+            //return view('manage.billings.index')->withBills($bills)->withShop($shop);
         }else{
             Session::flash('danger', 'Sorry, a problem occured while computing the bill');
             return redirect()->route('shops.index');
         }
 
     }
-    /**
+    /**s
      * Display the specified resource.
      *
      * @param  int  $id
@@ -150,10 +165,11 @@ class BillingsController extends Controller
         public function download_bill($bill_id)
     {              
         $bill = Billing::find($bill_id);        
-        PDF::SetTitle('Hello World');
+        $title  = $bill->statement_date."-".$bill->shop->name."- LPG Monthly Billing";
+        PDF::SetTitle($title);
         PDF::AddPage();
         PDF::writeHtml(view('manage.billings.invoice', compact('bill')));
-        PDF::Output('invoice.pdf');                        
+        PDF::Output($title.'.pdf');                        
 
 //        return view('manage.billings.invoice')->withBill($bill);        
 

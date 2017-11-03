@@ -808,7 +808,23 @@ $(document).ready(function () {
   $('button.dropdown').hover(function (e) {
     $(this).toggleClass('is-active');
   });
+
+  /*
+  	$("#activateModal").click(function() {
+  
+  					var mID = $(this).attr('m-id');	
+  		console.log(mID);
+  
+  	  		$("#showModal"+mID).addClass("is-active");  
+    		
+  	});*/
+
+  $(".modal-close").click(function () {
+
+    $(".modal").removeClass("is-active");
+  });
 });
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

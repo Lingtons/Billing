@@ -6,6 +6,9 @@
       <div class="column">
         <h1 class="title">Edit {{$role->display_name}}</h1>
       </div>
+      <div class="column">
+        <a href="{{route('roles.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Roles</a>
+      </div>
     </div>
     <hr class="m-t-0">
     <form action="{{route('roles.update', $role->id)}}" method="POST">

@@ -10,9 +10,7 @@
         <a href="{{route('permissions.create')}}" class="button is-primary is-pulled-right"><i class="fa fa-user-plus m-r-10"></i> Create New Permission</a>
       </div>
     </div>
-    <hr class="m-t-0">
-
-        <table class="table is-bordered is-striped is-narrow is-fullwidth">
+        <table  id="example" class="table is-bordered is-striped is-narrow is-fullwidth">
           <thead>
             <tr>
               <th>Name</th>

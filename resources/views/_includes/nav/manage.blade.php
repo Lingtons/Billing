@@ -36,7 +36,7 @@
         </li>
         <li>
           <a href="{{route('setting.index')}}">
-            <span class="icon is-small"><i class="fa fa-cog"></i></span> Manage Setting
+            <span class="icon is-small"><i class="fa fa-cog"></i></span> Variable Settings
           </a>
         </li>
         

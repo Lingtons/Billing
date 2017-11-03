@@ -27,9 +27,7 @@
                   <p>
                     S. Address : {{$shop->service_address}}
                   </p>
-                  <p>
-                    Last M-reading : {{$shop->last_reading}}
-                  </p>
+                  
                 </div>
 
                 <div class="columns is-mobile">
@@ -46,7 +44,7 @@
                     <a href="{{route('billing.show', $shop->id)}}" class="button is-info is-fullwidth">Usage</a>
                   </div>
                   <div class="column is-one-half">
-                    <a href="{{route('shops.edit', $shop->id)}}" class="button is-success is-fullwidth">Payments</a>
+                    <a href="{{route('payments.show', $shop->id)}}" class="button is-success is-fullwidth">Payments</a>
                   </div>
                 </div>
               </div>

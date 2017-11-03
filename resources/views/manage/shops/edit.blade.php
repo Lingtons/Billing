@@ -6,18 +6,22 @@
       <div class="column">
         <h1 class="title">Edit {{$shop->name}}</h1>
       </div>
+      <div class="column">
+        <a href="{{route('shops.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Shops</a>
+      </div>
     </div>
     <hr class="m-t-0">
-    <form action="{{route('shops.update', $shop->id)}}" method="POST">
-      {{ csrf_field() }}
-      {{ method_field('PUT') }}
+    <form action="{{route('shops.update', ['id' => $shop->id ])}}" method="post" role="form">
+      
+       {{method_field('PUT')}}
+                     {{csrf_field()}}
       <div class="columns">
         <div class="column">
           <div class="box">
             <article class="media">
               <div class="media-content">
                 <div class="content">
-                  <h2 class="title">Shop Details:</h1>
+                  <h2 class="title">Shop Details: {{$shop->id}}</h1>
                   <div class="field">
                     <p class="control">
                       <label for="name" class="label">Name</label>
@@ -42,12 +46,7 @@
                       <input type="text" class="input" value="{{$shop->service_address}}" id="service_address" name="service_address"  required>
                     </p>
                   </div>
-                  <div class="field">
-                    <p class="control">
-                      <label for="last_reading" class="label">Last Reading</label>
-                      <input type="number" class="input" name="last_reading" value="{{$shop->last_reading}}" id="last_reading"  required>
-                    </p>
-                  </div>
+                  
                   <div class="field">
                     <label for="owner" class="label">Assign Shop to Owner </label>
                     <div class="select is-fullwidth">
@@ -69,6 +68,20 @@
                       
                     
                     
+                  </div>
+<hr>
+Outstanding Extra Cost (<small>Sum up all outstanding extra costs in one line</small>)
+                  <div class="field">
+                    <p class="control">
+                      (<small>Clear and Update to remove extra costs</small>)
+                      <label for="xtra_desc" class="label">Description</label>
+                      <input type="text" class="input" name="outstanding_description" value="{{$shop->outstanding_description}}" id="xtra_desc">
+                    </p>
+                    <p class="control">
+        
+                      <label for="xtra_amount" class="label">Total Amount</label>
+                      <input type="number" class="input" name="outstanding_cost" value="{{$shop->outstanding_cost}}" id="xtra_amount">
+                    </p>
                   </div>
                   
                 </div>

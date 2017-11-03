@@ -5,6 +5,9 @@
       <div class="column">
         <h1 class="title">Create New Permission</h1>
       </div>
+      <div class="column">
+        <a href="{{route('permissions.index')}}" class="button is-primary is-pulled-right "><i class="fa fa-chevron-left m-r-10"></i>Back to Permissions</a>
+      </div>
     </div>
     <hr class="m-t-0">
 

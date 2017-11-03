@@ -20,6 +20,8 @@ class CreateShopsTable extends Migration
             $table->string('meter_no')->unique();
             $table->string('address');
             $table->string('service_address');
+            $table->string('outstanding_description')->nullable();
+            $table->double('outstanding_cost')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
